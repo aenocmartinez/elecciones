@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\arearUrbana\domain;
+namespace Src\areaUrbana\domain;
 
 class Barrio {
     private $id;

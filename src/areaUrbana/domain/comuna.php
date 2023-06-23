@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\arearUrbana\domain;
+namespace Src\areaUrbana\domain;
 
 class Comuna {
     private $id;
@@ -8,10 +8,15 @@ class Comuna {
     private $barrios;
     private $createdAt;
     private $updatedAt;
+    private $repository;
 
     public function __construct(string $nombre) {
         $this->nombre = $nombre;
         $this->barrios = [];
+    }
+
+    public function setRepository(comunaRepository $repository): void {
+        $this->repository = $repository;
     }
 
     public function setId(int $id): void {
@@ -52,5 +57,13 @@ class Comuna {
 
     public function barrios(): array {
         return $this->barrios;
+    }
+
+    public function crear() {
+        $success = $this->repository->crearComuna($this);
+        if ($success) {
+            dd("Comuna creada con éxito");
+        }
+        dd("Error creando una comuna");
     }
 }
